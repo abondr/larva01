@@ -1,0 +1,56 @@
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+main > .container {
+  padding: 60px 15px 0;
+}
+
+.footer {
+  background-color: #f5f5f5;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+code {
+  font-size: 80%;
+}
+
+.bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+.pagination li{
+  display: inline;
+  padding-left :15px;
+  padding-right: 10px;
+  border: 2px solid #cdcdcd;
+  background-color: #cdcdcd;
+  font-size: 30px;
+}
+.pagination  li.active {
+  background-color : #aaa;
+  color:blue;
+  
+}
+
+.pagination  li.disabled {
+  background-color : #666;
+  color:cdcdcd;
+  
+}
+#btnDeleteID {
+  color:blue;
+  background-color: cyan;
+  display: inline;
+}
