@@ -54,3 +54,7 @@ code {
   background-color: cyan;
   display: inline;
 }
+.error_block{
+  color:#FF5733;
+  font-size:20px;
+}

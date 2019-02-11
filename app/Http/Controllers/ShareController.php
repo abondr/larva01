@@ -13,9 +13,9 @@ class ShareController extends Controller
      * @return \Illuminate\Http\Response
      */
     protected $validatation = [
-        'share_name' => 'required|unique:shares|max:255',
-        'share_quantity' => 'required|max:1000|min:5',
-        'share_price' => 'required|max:1000|min:5',
+        'share_name' => 'required|max:255',
+        'share_quantity' => 'required',
+        'share_price' => 'required',
         'share_description' =>'required'
     ];
     public function index()
@@ -43,8 +43,13 @@ class ShareController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validatation['share_name'] .= "|unique:shares";
         $request->validate($this->validatation);
-        
+        $share = new Share($request);
+        print_r($request->attributes);die();
+        $share->save();
+        Session::flash('message', 'Share Added successfully'); 
+        return redirect('share');
     }
 
     /**
@@ -80,7 +85,7 @@ class ShareController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate($this->validatation);
     }
 
     /**
