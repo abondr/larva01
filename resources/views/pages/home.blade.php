@@ -1,7 +1,9 @@
-@extends('layouts.layout01',['currentPage'=>"home_page"])
+@extends('layouts.layout01',['currentPage'=>'home_page'])
 @section("page_title","Home Page")
 @section("page_content")
-<h3 class="mt-1">About Page</h3>
-<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt dolor aut soluta eaque harum sit ad amet molestiae incidunt, fuga aliquam a! Voluptas cum, delectus consectetur ipsum sint nihil minima!</p>
-
-@endSection
+<div class="container">
+    <h1 class="mt-5">Home Page</h1>
+    <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Est fugit enim quo. Optio mollitia quo rem beatae? Id tenetur labore corrupti a atque quod. Architecto velit accusantium ipsam vero corrupti?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet incidunt facilis, qui molestias delectus illum pariatur nobis dicta suscipit cum corporis nam sequi, aperiam odio sit commodi, consequuntur veritatis? Officia.</p>
+  </div>
+@endsection

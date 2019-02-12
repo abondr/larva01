@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use \App\Share;
 use Session;
+
 class ShareController extends Controller
 {
     /**
@@ -16,12 +17,12 @@ class ShareController extends Controller
         'share_name' => 'required|max:255',
         'share_quantity' => 'required',
         'share_price' => 'required',
-        'share_description' =>'required'
+        'share_description' => 'required'
     ];
     public function index()
     {
         $shares = Share::paginate(10);
-        return view("shares.index",compact("shares"));
+        return view("shares.index", compact("shares"));
     }
 
     /**
@@ -32,7 +33,7 @@ class ShareController extends Controller
     public function create()
     {
         $share = new Share();
-        return view("shares.form",compact("share"));
+        return view("shares.form", compact("share"));
     }
 
     /**
@@ -45,10 +46,13 @@ class ShareController extends Controller
     {
         $this->validatation['share_name'] .= "|unique:shares";
         $request->validate($this->validatation);
-        $share = new Share($request);
-        print_r($request->attributes);die();
+        $share = new Share();
+        $share->share_name = $request->share_name;
+        $share->share_price = $request->share_price;
+        $share->share_quantity = $request->share_quantity;
+        $share->share_description = $request->share_description;
         $share->save();
-        Session::flash('message', 'Share Added successfully'); 
+        Session::flash('message', 'Share Added successfully');
         return redirect('share');
     }
 
@@ -61,7 +65,7 @@ class ShareController extends Controller
     public function show($id)
     {
         $share = Share::find($id);
-        return view("shares.show",compact("share"));
+        return view("shares.show", compact("share"));
     }
 
     /**
@@ -73,7 +77,7 @@ class ShareController extends Controller
     public function edit($id)
     {
         $share = Share::find($id);
-        return view("shares.form",compact("share"));
+        return view("shares.form", compact("share"));
     }
 
     /**
@@ -86,6 +90,14 @@ class ShareController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate($this->validatation);
+        $share = Share::find($id);
+        $share->share_name = $request->share_name;
+        $share->share_price = $request->share_price;
+        $share->share_quantity = $request->share_quantity;
+        $share->share_description = $request->share_description;
+        $share->save();
+        Session::flash('message', 'Share Edited successfully');
+        return redirect('share');
     }
 
     /**
@@ -98,7 +110,7 @@ class ShareController extends Controller
     {
         $share = Share::find($id);
         $share->delete();
-        Session::flash('message', 'Share Deleted successfully'); 
+        Session::flash('message', 'Share Deleted successfully');
         return redirect('share');
     }
 }
